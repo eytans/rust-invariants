@@ -11,7 +11,7 @@ pub const STATIC_MAX_LEVEL: AssertLevel = log::STATIC_MAX_LEVEL;
 /// # Examples
 ///
 /// ```rust
-/// use rust_assertions::eassert;
+/// use assertify::eassert;
 /// # fn main() {
 ///     eassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Error, assertions::STATIC_MAX_LEVEL);
@@ -30,7 +30,7 @@ macro_rules! eassert {
 /// # Examples
 ///
 /// ```rust
-/// use rust_assertions::wassert;
+/// use assertify::wassert;
 /// # fn main() {
 ///     wassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Warn, assertions::STATIC_MAX_LEVEL);
@@ -49,7 +49,7 @@ macro_rules! wassert {
 /// # Examples
 ///
 /// ```rust
-/// use rust_assertions::iassert!;
+/// use assertify::iassert!;
 /// # fn main() {
 ///     iassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Info, assertions::STATIC_MAX_LEVEL);
@@ -68,7 +68,7 @@ macro_rules! iassert {
 /// # Examples
 ///
 /// ```rust
-/// use rust_assertions::dassert;
+/// use assertify::dassert;
 /// # fn main() {
 ///     dassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Debug, assertions::STATIC_MAX_LEVEL);
@@ -87,7 +87,7 @@ macro_rules! dassert {
 /// # Examples
 ///
 /// ```rust
-/// use rust_assertions::tassert;
+/// use assertify::tassert;
 /// # fn main() {
 ///     tassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Trace, assertions::STATIC_MAX_LEVEL);
