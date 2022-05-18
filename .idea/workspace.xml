@@ -9,7 +9,13 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d87ff3e-7816-49ca-89b4-42312d49c488" name="Changes" comment="Ready version 0.1.0" />
+    <list default="true" id="3d120208-ac4f-41b4-87d7-6db49aa8adad" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/assertify.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,12 +28,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
-    <option name="directoryName" value="pg4rn1kg" />
+    <option name="directoryName" value="xoyulq5l" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="29Lbb6e7DGLugk4KZreieezpXAf" />
+  <component name="ProjectId" id="29LpZb8aF6QkYzTM1CriiGmqfun" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -40,58 +46,51 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "/home/eytan/Work",
+    "last_opened_file_path": "/home/eytan/Work/rust-invariants",
     "nodejs_package_manager_path": "npm",
     "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Test lib::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package invariants --lib tests" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cargo.Test lib::tests" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1d87ff3e-7816-49ca-89b4-42312d49c488" name="Changes" comment="" />
-      <created>1652895380845</created>
+      <changelist id="3d120208-ac4f-41b4-87d7-6db49aa8adad" name="Changes" comment="" />
+      <created>1652902276596</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1652895380845</updated>
-      <workItem from="1652895382017" duration="2519000" />
+      <updated>1652902276596</updated>
+      <workItem from="1652902277710" duration="320000" />
     </task>
-    <task id="LOCAL-00001" summary="Fixed project files?">
-      <created>1652895419121</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1652895419121</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Ready version 0.1.0">
-      <created>1652899394188</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1652899394188</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed project files?" />
-    <MESSAGE value="Ready version 0.1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ready version 0.1.0" />
   </component>
 </project>

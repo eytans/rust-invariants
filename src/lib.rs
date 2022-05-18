@@ -11,7 +11,7 @@ all assertions in release mode and only *some* in tests, by your choosing.
 There are different assertion levels defined, and macros are provided for each of them.
 For trace assertions, you can use the `tassert!` macro:
 ```rust
-use assertify::tassert;
+use invariants::tassert;
 fn main() {
     tassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
         assertions::AssertLevel::Trace, assertions::STATIC_MAX_LEVEL);
@@ -34,7 +34,7 @@ pub const STATIC_MAX_LEVEL: AssertLevel = log::STATIC_MAX_LEVEL;
 /// # Examples
 ///
 /// ```rust
-/// use assertify::eassert;
+/// use invariants::eassert;
 /// # fn main() {
 ///     eassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Error, assertions::STATIC_MAX_LEVEL);
@@ -54,7 +54,7 @@ macro_rules! eassert {
 /// # Examples
 ///
 /// ```rust
-/// use assertify::wassert;
+/// use invariants::wassert;
 /// # fn main() {
 ///     wassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Warn, assertions::STATIC_MAX_LEVEL);
@@ -74,7 +74,7 @@ macro_rules! wassert {
 /// # Examples
 ///
 /// ```rust
-/// use assertify::iassert;
+/// use invariants::iassert;
 /// # fn main() {
 ///     iassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Info, assertions::STATIC_MAX_LEVEL);
@@ -94,7 +94,7 @@ macro_rules! iassert {
 /// # Examples
 ///
 /// ```rust
-/// use assertify::dassert;
+/// use invariants::dassert;
 /// # fn main() {
 ///     dassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Debug, assertions::STATIC_MAX_LEVEL);
@@ -114,7 +114,7 @@ macro_rules! dassert {
 /// # Examples
 ///
 /// ```rust
-/// use assertify::tassert;
+/// use invariants::tassert;
 /// # fn main() {
 ///     tassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Trace, assertions::STATIC_MAX_LEVEL);

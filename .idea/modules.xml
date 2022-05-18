@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/assertify.iml" filepath="$PROJECT_DIR$/.idea/assertify.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/rust-invariants.iml" filepath="$PROJECT_DIR$/.idea/rust-invariants.iml" />
     </modules>
   </component>
 </project>
