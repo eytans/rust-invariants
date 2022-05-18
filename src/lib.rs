@@ -1,3 +1,26 @@
+/*!
+This crate provides macros and functions for working assertions as an inherent part of your
+development process. Whether you use assertions for specific points in your code or for buffing up
+your testing, this crate is for you.
+
+The main motivation for this crate is to make it easy to fill your code with assertions without
+taking a performance hit in release or in *tests*. This is because the compiler will optimize away
+all assertions in release mode and only *some* in tests, by your choosing.
+
+## Basic Usage
+There are different assertion levels defined, and macros are provided for each of them.
+For trace assertions, you can use the `tassert!` macro:
+```rust
+use assertify::tassert;
+fn main() {
+    tassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
+        assertions::AssertLevel::Trace, assertions::STATIC_MAX_LEVEL);
+}
+```
+
+See the github repository for more information.
+*/
+
 type AssertLevel = log::LevelFilter;
 
 pub const STATIC_MAX_LEVEL: AssertLevel = log::STATIC_MAX_LEVEL;
@@ -16,6 +39,7 @@ pub const STATIC_MAX_LEVEL: AssertLevel = log::STATIC_MAX_LEVEL;
 ///     eassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Error, assertions::STATIC_MAX_LEVEL);
 /// # }
+/// ```
 #[macro_export]
 macro_rules! eassert {
     ($($arg:tt)*) => (if $crate::AssertLevel::Error <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
@@ -35,6 +59,7 @@ macro_rules! eassert {
 ///     wassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Warn, assertions::STATIC_MAX_LEVEL);
 /// # }
+/// ```
 #[macro_export]
 macro_rules! wassert {
     ($($arg:tt)*) => (if $crate::AssertLevel::Warn <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
@@ -49,11 +74,12 @@ macro_rules! wassert {
 /// # Examples
 ///
 /// ```rust
-/// use assertify::iassert!;
+/// use assertify::iassert;
 /// # fn main() {
 ///     iassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Info, assertions::STATIC_MAX_LEVEL);
 /// # }
+/// ```
 #[macro_export]
 macro_rules! iassert {
     ($($arg:tt)*) => (if $crate::AssertLevel::Info <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
@@ -73,6 +99,7 @@ macro_rules! iassert {
 ///     dassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Debug, assertions::STATIC_MAX_LEVEL);
 /// # }
+/// ```
 #[macro_export]
 macro_rules! dassert {
     ($($arg:tt)*) => (if $crate::AssertLevel::Debug <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
@@ -92,6 +119,7 @@ macro_rules! dassert {
 ///     tassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
 /// assertions::AssertLevel::Trace, assertions::STATIC_MAX_LEVEL);
 /// # }
+/// ```
 #[macro_export]
 macro_rules! tassert {
     ($($arg:tt)*) => (if $crate::AssertLevel::Trace <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
