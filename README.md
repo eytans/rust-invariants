@@ -1,4 +1,4 @@
-# Rust-Assertions
+# Rust-Invariants
 
 ## What is it?
 A library with assertion macros to control when some assertions are being compiled or run.
