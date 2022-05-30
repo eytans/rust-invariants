@@ -21,7 +21,7 @@ fn main() {
 See the github repository for more information.
 */
 
-type AssertLevel = log::LevelFilter;
+pub type AssertLevel = log::LevelFilter;
 
 pub const STATIC_MAX_LEVEL: AssertLevel = log::STATIC_MAX_LEVEL;
 
