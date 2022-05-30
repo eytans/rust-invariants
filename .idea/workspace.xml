@@ -9,11 +9,8 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d120208-ac4f-41b4-87d7-6db49aa8adad" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/assertify.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="3d120208-ac4f-41b4-87d7-6db49aa8adad" name="Changes" comment="Changed name again (assertify was not free :( )">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,19 +35,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "/home/eytan/Work/rust-invariants",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/eytan/Work/rust-invariants&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Test lib::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package invariants --lib tests" />
@@ -77,6 +74,7 @@
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -86,11 +84,42 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652902276596</updated>
-      <workItem from="1652902277710" duration="320000" />
+      <workItem from="1652902277710" duration="689000" />
+      <workItem from="1653916839872" duration="29000" />
     </task>
+    <task id="LOCAL-00001" summary="Changed name again (assertify was not free :( )">
+      <created>1652902861726</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652902861726</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Changed name again (assertify was not free :( )">
+      <created>1652902882600</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652902882600</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Changed name again (assertify was not free :( )" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed name again (assertify was not free :( )" />
   </component>
 </project>
