@@ -25,6 +25,21 @@ pub type AssertLevel = log::LevelFilter;
 
 pub const STATIC_MAX_LEVEL: AssertLevel = log::STATIC_MAX_LEVEL;
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct AssertConfig {
+    assertion_level: AssertLevel,
+}
+
+impl AssertConfig {
+    pub fn new(assertion_level: AssertLevel) -> Self {
+        Self { assertion_level }
+    }
+
+    pub fn assertion_level(&self) -> AssertLevel {
+        self.assertion_level
+    }
+}
+
 /// Asserts that the given expression is true when Error level assertions are enabled.
 ///
 /// If the max assert level is lower than Error, this macro does nothing.
@@ -42,7 +57,10 @@ pub const STATIC_MAX_LEVEL: AssertLevel = log::STATIC_MAX_LEVEL;
 /// ```
 #[macro_export]
 macro_rules! eassert {
-    ($($arg:tt)*) => (if $crate::AssertLevel::Error <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
+    ($config:expr; $($arg:tt)*) =>(
+        if $crate::AssertLevel::Error <= $crate::STATIC_MAX_LEVEL
+            && $crate::AssertLevel::Error <= $config.assertion_level()  { assert!($($arg)*); });
+    ($($arg:tt)*) => (if $crate::AssertLevel::Error <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); });
 }
 
 /// Asserts that the given expression is true when Warn level assertions are enabled.
@@ -62,6 +80,9 @@ macro_rules! eassert {
 /// ```
 #[macro_export]
 macro_rules! wassert {
+    ($config:expr; $($arg:tt)*) =>(
+        if $crate::AssertLevel::Warn <= $crate::STATIC_MAX_LEVEL
+            && $crate::AssertLevel::Warn <= $config.assertion_level()  { assert!($($arg)*); });
     ($($arg:tt)*) => (if $crate::AssertLevel::Warn <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
 }
 
@@ -82,6 +103,9 @@ macro_rules! wassert {
 /// ```
 #[macro_export]
 macro_rules! iassert {
+    ($config:expr; $($arg:tt)*) =>(
+        if $crate::AssertLevel::Info <= $crate::STATIC_MAX_LEVEL
+            && $crate::AssertLevel::Info <= $config.assertion_level()  { assert!($($arg)*); });
     ($($arg:tt)*) => (if $crate::AssertLevel::Info <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
 }
 
@@ -102,6 +126,9 @@ macro_rules! iassert {
 /// ```
 #[macro_export]
 macro_rules! dassert {
+    ($config:expr; $($arg:tt)*) =>(
+        if $crate::AssertLevel::Debug <= $crate::STATIC_MAX_LEVEL
+            && $crate::AssertLevel::Debug <= $config.assertion_level()  { assert!($($arg)*); });
     ($($arg:tt)*) => (if $crate::AssertLevel::Debug <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
 }
 
@@ -122,6 +149,9 @@ macro_rules! dassert {
 /// ```
 #[macro_export]
 macro_rules! tassert {
+    ($config:expr; $($arg:tt)*) =>(
+        if $crate::AssertLevel::Trace <= $crate::STATIC_MAX_LEVEL
+            && $crate::AssertLevel::Trace <= $config.assertion_level()  { assert!($($arg)*); });
     ($($arg:tt)*) => (if $crate::AssertLevel::Trace <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
 }
 
@@ -133,6 +163,45 @@ mod tests {
     fn it_works() {
         let result = 2 + 2;
         dassert!(result == 4);
+        log::info!("{}", result);
+    }
+
+    #[test]
+    #[should_panic]
+    fn it_crashes() {
+        let result = 2 + 2;
+        dassert!(result == 5);
+        log::info!("{}", result);
+    }
+
+    #[test]
+    fn config_sanity() {
+        let result = 2 + 2;
+        let config = crate::AssertConfig {
+            assertion_level: crate::AssertLevel::Error,
+        };
+        eassert!(config; result == 4);
+        log::info!("{}", result);
+    }
+
+    #[test]
+    #[should_panic]
+    fn config_crashes() {
+        let result = 2 + 2;
+        let config = crate::AssertConfig {
+            assertion_level: crate::AssertLevel::Warn,
+        };
+        eassert!(config; result == 3);
+        log::info!("{}", result);
+    }
+
+    #[test]
+    fn config_filters() {
+        let result = 2 + 3;
+        let config = crate::AssertConfig {
+            assertion_level: crate::AssertLevel::Warn,
+        };
+        iassert!(config; result == 4);
         log::info!("{}", result);
     }
 }
