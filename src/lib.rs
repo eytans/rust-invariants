@@ -14,7 +14,7 @@ For trace assertions, you can use the `tassert!` macro:
 use invariants::tassert;
 fn main() {
     tassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
-        assertions::AssertLevel::Trace, assertions::STATIC_MAX_LEVEL);
+        invariants::AssertLevel::Trace, invariants::STATIC_MAX_LEVEL);
 }
 ```
 
@@ -24,6 +24,35 @@ See the github repository for more information.
 pub type AssertLevel = log::LevelFilter;
 
 pub const STATIC_MAX_LEVEL: AssertLevel = log::STATIC_MAX_LEVEL;
+
+static mut MAX_LEVEL: AssertLevel = AssertLevel::Trace;
+
+/// Sets the max assert level. This level is checked in runtime.
+///
+/// # Safety
+/// This function is unsafe because it can lead to undefined behavior if called from multiple threads
+/// without synchronization.
+///
+/// # Examples
+///
+/// ```rust
+/// use invariants::set_max_level;
+/// use invariants::AssertLevel;
+///
+/// fn main() {
+///    set_max_level(AssertLevel::Error);
+/// }
+/// ```
+pub fn set_max_level(level: AssertLevel) {
+    unsafe {
+        MAX_LEVEL = level;
+    }
+}
+
+/// Returns the max assert level. This level is checked in runtime.
+pub fn max_level() -> AssertLevel {
+    unsafe { MAX_LEVEL }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AssertConfig {
@@ -51,16 +80,18 @@ impl AssertConfig {
 /// ```rust
 /// use invariants::eassert;
 /// # fn main() {
-///     eassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
-/// assertions::AssertLevel::Error, assertions::STATIC_MAX_LEVEL);
+///     eassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}. Max compile time level is {}.",
+/// invariants::AssertLevel::Error, invariants::max_level(), invariants::STATIC_MAX_LEVEL);
 /// # }
 /// ```
 #[macro_export]
 macro_rules! eassert {
     ($config:expr; $($arg:tt)*) =>(
         if $crate::AssertLevel::Error <= $crate::STATIC_MAX_LEVEL
+            && $crate::AssertLevel::Error <= $crate::max_level()
             && $crate::AssertLevel::Error <= $config.assertion_level()  { assert!($($arg)*); });
-    ($($arg:tt)*) => (if $crate::AssertLevel::Error <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); });
+    ($($arg:tt)*) => (if $crate::AssertLevel::Error <= $crate::STATIC_MAX_LEVEL
+                        && $crate::AssertLevel::Error <= $crate::max_level() { assert!($($arg)*); });
 }
 
 /// Asserts that the given expression is true when Warn level assertions are enabled.
@@ -75,15 +106,17 @@ macro_rules! eassert {
 /// use invariants::wassert;
 /// # fn main() {
 ///     wassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
-/// assertions::AssertLevel::Warn, assertions::STATIC_MAX_LEVEL);
+/// invariants::AssertLevel::Warn, invariants::STATIC_MAX_LEVEL);
 /// # }
 /// ```
 #[macro_export]
 macro_rules! wassert {
     ($config:expr; $($arg:tt)*) =>(
         if $crate::AssertLevel::Warn <= $crate::STATIC_MAX_LEVEL
+            && $crate::AssertLevel::Warn <= $crate::max_level()
             && $crate::AssertLevel::Warn <= $config.assertion_level()  { assert!($($arg)*); });
-    ($($arg:tt)*) => (if $crate::AssertLevel::Warn <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
+    ($($arg:tt)*) => (if $crate::AssertLevel::Warn <= $crate::STATIC_MAX_LEVEL
+                        && $crate::AssertLevel::Warn <= $crate::max_level() { assert!($($arg)*); })
 }
 
 /// Asserts that the given expression is true when Info level assertions are enabled.
@@ -98,15 +131,17 @@ macro_rules! wassert {
 /// use invariants::iassert;
 /// # fn main() {
 ///     iassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
-/// assertions::AssertLevel::Info, assertions::STATIC_MAX_LEVEL);
+/// invariants::AssertLevel::Info, invariants::STATIC_MAX_LEVEL);
 /// # }
 /// ```
 #[macro_export]
 macro_rules! iassert {
     ($config:expr; $($arg:tt)*) =>(
         if $crate::AssertLevel::Info <= $crate::STATIC_MAX_LEVEL
+            && $crate::AssertLevel::Info <= $crate::max_level()
             && $crate::AssertLevel::Info <= $config.assertion_level()  { assert!($($arg)*); });
-    ($($arg:tt)*) => (if $crate::AssertLevel::Info <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
+    ($($arg:tt)*) => (if $crate::AssertLevel::Info <= $crate::STATIC_MAX_LEVEL
+                        && $crate::AssertLevel::Info <= $crate::max_level() { assert!($($arg)*); })
 }
 
 /// Asserts that the given expression is true when Debug level assertions are enabled.
@@ -121,15 +156,17 @@ macro_rules! iassert {
 /// use invariants::dassert;
 /// # fn main() {
 ///     dassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
-/// assertions::AssertLevel::Debug, assertions::STATIC_MAX_LEVEL);
+/// invariants::AssertLevel::Debug, invariants::STATIC_MAX_LEVEL);
 /// # }
 /// ```
 #[macro_export]
 macro_rules! dassert {
     ($config:expr; $($arg:tt)*) =>(
         if $crate::AssertLevel::Debug <= $crate::STATIC_MAX_LEVEL
+            && $crate::AssertLevel::Debug <= $crate::max_level()
             && $crate::AssertLevel::Debug <= $config.assertion_level()  { assert!($($arg)*); });
-    ($($arg:tt)*) => (if $crate::AssertLevel::Debug <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
+    ($($arg:tt)*) => (if $crate::AssertLevel::Debug <= $crate::STATIC_MAX_LEVEL
+                        && $crate::AssertLevel::Debug <= $crate::max_level() { assert!($($arg)*); })
 }
 
 /// Asserts that the given expression is true when Trace level assertions are enabled.
@@ -144,15 +181,17 @@ macro_rules! dassert {
 /// use invariants::tassert;
 /// # fn main() {
 ///     tassert!(false, "This will fail when assert level is equal or lower then {}. Current level is {}.",
-/// assertions::AssertLevel::Trace, assertions::STATIC_MAX_LEVEL);
+/// invariants::AssertLevel::Trace, invariants::STATIC_MAX_LEVEL);
 /// # }
 /// ```
 #[macro_export]
 macro_rules! tassert {
     ($config:expr; $($arg:tt)*) =>(
         if $crate::AssertLevel::Trace <= $crate::STATIC_MAX_LEVEL
+            && $crate::AssertLevel::Trace <= $crate::max_level()
             && $crate::AssertLevel::Trace <= $config.assertion_level()  { assert!($($arg)*); });
-    ($($arg:tt)*) => (if $crate::AssertLevel::Trace <= $crate::STATIC_MAX_LEVEL { assert!($($arg)*); })
+    ($($arg:tt)*) => (if $crate::AssertLevel::Trace <= $crate::STATIC_MAX_LEVEL
+                        && $crate::AssertLevel::Trace <= $crate::max_level() { assert!($($arg)*); })
 }
 
 #[cfg(test)]
@@ -202,6 +241,23 @@ mod tests {
             assertion_level: crate::AssertLevel::Warn,
         };
         iassert!(config; result == 4);
+        log::info!("{}", result);
+    }
+
+    #[test]
+    fn max_level_filters() {
+        let result = 2 + 3;
+        crate::set_max_level(crate::AssertLevel::Warn);
+        iassert!(result == 4);
+        log::info!("{}", result);
+    }
+
+    #[test]
+    #[should_panic]
+    fn max_level_sanity() {
+        let result = 2 + 3;
+        crate::set_max_level(crate::AssertLevel::Error);
+        eassert!(result == 4);
         log::info!("{}", result);
     }
 }

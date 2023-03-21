@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
@@ -9,8 +15,10 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d120208-ac4f-41b4-87d7-6db49aa8adad" name="Changes" comment="Changed AssertLevel to be public">
+    <list default="true" id="3d120208-ac4f-41b4-87d7-6db49aa8adad" name="Changes" comment="Updated workspace.xml">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,18 +51,23 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/eytan/Work/rust-invariants&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager" selected="Cargo.Test lib::tests">
     <configuration name="Test lib::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package invariants --lib tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="emulateTerminal" value="false" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
       <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
       <option name="withSudo" value="false" />
       <option name="buildTarget" value="REMOTE" />
       <option name="backtrace" value="SHORT" />
@@ -68,10 +81,10 @@
     <configuration name="Test tests::config_crashes" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package invariants --lib tests::config_crashes -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="emulateTerminal" value="false" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
       <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
       <option name="withSudo" value="false" />
       <option name="buildTarget" value="REMOTE" />
       <option name="backtrace" value="SHORT" />
@@ -85,10 +98,27 @@
     <configuration name="Test tests::config_works" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package invariants --lib tests::config_works -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="emulateTerminal" value="false" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
       <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test tests::it_crashes" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package invariants --lib tests::it_crashes -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="emulateTerminal" value="false" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
       <option name="withSudo" value="false" />
       <option name="buildTarget" value="REMOTE" />
       <option name="backtrace" value="SHORT" />
@@ -102,8 +132,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Cargo.Test lib::tests" />
-        <item itemvalue="Cargo.Test tests::config_crashes" />
+        <item itemvalue="Cargo.Test tests::it_crashes" />
         <item itemvalue="Cargo.Test tests::config_works" />
+        <item itemvalue="Cargo.Test tests::config_crashes" />
       </list>
     </recent_temporary>
   </component>
@@ -121,6 +152,21 @@
       <updated>1652902276596</updated>
       <workItem from="1652902277710" duration="689000" />
       <workItem from="1653916839872" duration="197000" />
+      <workItem from="1670603163230" duration="10697000" />
+      <workItem from="1671000808599" duration="1876000" />
+      <workItem from="1671011270591" duration="623000" />
+      <workItem from="1671011907540" duration="598000" />
+      <workItem from="1671029108379" duration="598000" />
+      <workItem from="1671122384988" duration="507000" />
+      <workItem from="1671122906321" duration="599000" />
+      <workItem from="1671561028695" duration="618000" />
+      <workItem from="1671613339323" duration="598000" />
+      <workItem from="1673456945016" duration="70000" />
+      <workItem from="1673457032150" duration="599000" />
+      <workItem from="1674372936634" duration="878000" />
+      <workItem from="1674564027721" duration="598000" />
+      <workItem from="1674980336353" duration="1215000" />
+      <workItem from="1679414462100" duration="3408000" />
     </task>
     <task id="LOCAL-00001" summary="Changed name again (assertify was not free :( )">
       <created>1652902861726</created>
@@ -150,7 +196,28 @@
       <option name="project" value="LOCAL" />
       <updated>1653916925449</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="More tests and added config to enable finer assertion control">
+      <created>1670942917937</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670942917937</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Updated version">
+      <created>1670942969409</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670942969409</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated workspace.xml">
+      <created>1670943639577</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670943639577</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +237,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed name again (assertify was not free :( )" />
     <MESSAGE value="Changed AssertLevel to be public" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed AssertLevel to be public" />
+    <MESSAGE value="More tests and added config to enable finer assertion control" />
+    <MESSAGE value="Updated version" />
+    <MESSAGE value="Updated workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated workspace.xml" />
   </component>
 </project>
