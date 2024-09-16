@@ -33,7 +33,7 @@ pub const STATIC_MAX_LEVEL: AssertLevel = log::LevelFilter::Warn;
 pub const STATIC_MAX_LEVEL: AssertLevel = log::LevelFilter::Info;
 #[cfg(feature = "debug")]
 pub const STATIC_MAX_LEVEL: AssertLevel = log::LevelFilter::Debug;
-#[cfg(feature = "trace")]
+#[cfg(all(not(feature = "error"), not(feature = "warn"), not(feature = "info"), not(feature = "debug"), not(feature = "off")))]
 pub const STATIC_MAX_LEVEL: AssertLevel = log::LevelFilter::Trace;
 
 static mut MAX_LEVEL: AssertLevel = AssertLevel::Trace;

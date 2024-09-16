@@ -14,10 +14,9 @@ categories = ["development-tools", "development-tools::debugging", "development-
 log = "0.4.17"
 
 [features]
-default = ["warn"]
+default = []
 off = []
 warn = []
 error = []
 debug = []
-trace = []
 info = []
