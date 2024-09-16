@@ -12,3 +12,12 @@ categories = ["development-tools", "development-tools::debugging", "development-
 
 [dependencies]
 log = "0.4.17"
+
+[features]
+default = ["warn"]
+off = []
+warn = []
+error = []
+debug = []
+trace = []
+info = []

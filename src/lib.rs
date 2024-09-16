@@ -23,7 +23,18 @@ See the github repository for more information.
 
 pub type AssertLevel = log::LevelFilter;
 
-pub const STATIC_MAX_LEVEL: AssertLevel = log::STATIC_MAX_LEVEL;
+#[cfg(feature = "off")]
+pub const STATIC_MAX_LEVEL: AssertLevel = log::LevelFilter::Off;
+#[cfg(feature = "error")]
+pub const STATIC_MAX_LEVEL: AssertLevel = log::LevelFilter::Error;
+#[cfg(feature = "warn")]
+pub const STATIC_MAX_LEVEL: AssertLevel = log::LevelFilter::Warn;
+#[cfg(feature = "info")]
+pub const STATIC_MAX_LEVEL: AssertLevel = log::LevelFilter::Info;
+#[cfg(feature = "debug")]
+pub const STATIC_MAX_LEVEL: AssertLevel = log::LevelFilter::Debug;
+#[cfg(feature = "trace")]
+pub const STATIC_MAX_LEVEL: AssertLevel = log::LevelFilter::Trace;
 
 static mut MAX_LEVEL: AssertLevel = AssertLevel::Trace;
 
